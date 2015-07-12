@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,9 +18,16 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+						 <c:if test="${not empty error}">
+                                <div class="alert alert-danger">
+                                    <spring:message
+                                        code="AbstractUserDetailsAuthenticationProvider.badCredentials" />
+                                    <br />
+                                </div>
+                            </c:if>
+						<form action="<c:url value='/j_spring_security_check' />" method="post">
+							<input name='username' type="text" placeholder="Name" />
+							<input name='password' type="password" placeholder="Password" />
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
@@ -42,6 +52,8 @@
 				</div>
 			</div>
 		</div>
+		<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 	</section><!--/form-->
 	
 	 <jsp:include page="/WEB-INF/layout/footer.jsp"/> 

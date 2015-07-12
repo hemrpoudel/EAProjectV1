@@ -15,10 +15,11 @@
 
 
 	<mvc:annotation-driven />
-	<context:component-scan base-package="mum.ea" />
+	<context:component-scan base-package="mum.ea.controller" />
+	<!--  <context:component-scan base-package="edu.mum.mscrum.controller,edu.mum.mscrum.hrss.controller" /> -->
 
 
-	<bean id="bookDao" class="mum.ea.dao.impl.BookDao" />
+	<!-- <bean id="bookDao" class="mum.ea.dao.impl.BookDao" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->

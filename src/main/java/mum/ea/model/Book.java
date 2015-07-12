@@ -1,16 +1,14 @@
 package mum.ea.model;
 
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class Book {
 	private int id;
-	@NotEmpty
+
 	private String title;
 //	@Pattern(regexp="d{3}-d{10}")
 	private String ISBN;
-	@NotEmpty
+	
+	
 	private String author;
 	private double price;
 

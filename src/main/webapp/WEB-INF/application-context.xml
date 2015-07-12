@@ -13,7 +13,7 @@
 		
 
 <!-- Scan all packages except controllers -->
-    <context:component-scan base-package="mum.ea">
+    <context:component-scan base-package="mum.ea.controller">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 	
@@ -22,8 +22,9 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/store" />
         <property name="username" value="root" />
-        <property name="password" value="" />
+        <property name="password" value="root" />
     </bean>
+
 
 	<!--Entity Manager Factory (id must be entityManagerFactory)-->
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
@@ -36,9 +37,9 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
             </props>
         </property>
-        <property name="persistenceProvider">
+       <!--  <property name="persistenceProvider">
             <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
-        </property>
+        </property> -->
     </bean>
     
     <!-- enable the configuration of transactional behavior based on annotations -->
