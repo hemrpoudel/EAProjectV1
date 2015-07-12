@@ -37,11 +37,11 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
             </props>
         </property>
-       <!--  <property name="persistenceProvider">
+        <property name="persistenceProvider">
             <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
-        </property> -->
+        </property>
     </bean>
-    
+    <import resource="security.xml"/>
     <!-- enable the configuration of transactional behavior based on annotations -->
      <bean class="org.springframework.orm.jpa.JpaTransactionManager"
           id="transactionManager">
