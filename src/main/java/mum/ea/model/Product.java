@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name ="product")
@@ -19,7 +24,9 @@ public class Product {
 	
 	@Id @GeneratedValue
 	private int id;
+	@Size(min=4, max=20)
 	private String name;
+	@NotNull(message="Price required")
 	private int price;
 	private String description;
 	private String image;

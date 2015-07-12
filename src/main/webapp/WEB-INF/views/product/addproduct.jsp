@@ -15,16 +15,22 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Add Product</h2>
+					
 						<form:form modelAttribute="product" action="saveProduct">
+						  <form:errors path="name" cssStyle="color:red"/>
 							<form:input path="name" placeholder="Name" />
+							
+							    <form:errors path="price" cssStyle="color:red"/>
 							<form:input  path="price" placeholder="Price" />
-							<form:input  path="desc" placeholder="Description" />
+							
+							 <form:errors path="description" cssStyle="color:red"/>
+							<form:input  path="description" placeholder="Description" />
+							
+							<form:errors path="image" cssStyle="color:red"/>
 							<form:input path="image" placeholder="Upload Image" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
+							
+							<button type="submit" class="btn btn-default">Submit</button>
+
 						</form:form>
 					</div>
 				</div>
