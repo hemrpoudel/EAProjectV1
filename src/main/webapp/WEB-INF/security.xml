@@ -16,8 +16,11 @@
  <intercept-url pattern="/OnlineStore/*" access="hasRole('ROLE_ADMIN')" />
  login-page="/login/" 
  -->
+ 	<http pattern="/cart/**" security="none"/>
+ 	
 	<http auto-config="true" use-expressions="true">
 		<access-denied-handler error-page="/403" />
+
 		<intercept-url pattern="/product" access="isAuthenticated()"/>
 		
 		<form-login  

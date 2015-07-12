@@ -16,11 +16,11 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping(value={"/","/home"})
+/*	@RequestMapping(value={"/","/home"})
 	public String home() {
 		System.out.println("home");
 		return "index";
-	}
+	}*/
 	
 	 @RequestMapping("/loginfailed")
 	   public String loginFailed(){

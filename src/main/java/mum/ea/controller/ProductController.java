@@ -26,11 +26,11 @@ public class ProductController {
 		return "/product/productdetail";
 	}
 	
-	@RequestMapping("/checkout")
-	public String loadCheckout() {
-		
-		return "/product/checkout";
-	}
+//	@RequestMapping("/cart")
+//	public String viewCart() {
+//		
+//		return "/product/cart";
+//	}
 	
 	@RequestMapping("/add")
 	public String addProduct(Model model) {

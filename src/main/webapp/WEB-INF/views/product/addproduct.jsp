@@ -20,7 +20,7 @@
 						  <form:errors path="name" cssStyle="color:red"/>
 							<form:input path="name" placeholder="Name" />
 							
-							    <form:errors path="price" cssStyle="color:red"/>
+							 <form:errors path="price" cssStyle="color:red"/>
 							<form:input  path="price" placeholder="Price" />
 							
 							 <form:errors path="description" cssStyle="color:red"/>
