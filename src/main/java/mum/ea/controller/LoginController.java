@@ -10,17 +10,18 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String redirectRoot() {
-//		return "redirect:/books";
+
 		return "/login/login";
 	}
 	
 	
 	
-/*	@RequestMapping(value={"/","/home"})
+	
+	@RequestMapping(value={"/","/home"})
 	public String home() {
-		System.out.println("home");
+		
 		return "index";
-	}*/
+	}
 	
 	 @RequestMapping("/loginfailed")
 	   public String loginFailed(){
@@ -31,7 +32,7 @@ public class LoginController {
 	    @RequestMapping("/403")
 	    public String accessDenied(){
 	     	
-	     	return "login/accessdenied";
+	     	return "login/login";
 	     }
 	    
 	    
