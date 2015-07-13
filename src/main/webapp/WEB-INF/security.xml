@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	 http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/security
+		 http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
-
-	<!-- login-page="/login/" -->
-	<http security="none" pattern="/cart/**"></http>
-	<http auto-config="true" use-expressions="true">
-
-		<intercept-url pattern="/login" access="isAnonymous()" />
-		<intercept-url pattern="/OnlineStore/"
-			access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
-		<intercept-url pattern="/OnlineStore/product/add"
+	<security:global-method-security
+		pre-post-annotations="enabled" />
+	<security:http pattern="/" security="none"/>
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/login"
+			access="permitAll" />
+		<security:intercept-url pattern="/logout"
+			access="permitAll" />
+		<security:intercept-url pattern="/OnlineStore/.*$"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/OnlineStore/product/**"
 			access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/OnlineStore/*" access="hasRole('ROLE_ADMIN')" />
-		<access-denied-handler error-page="/403" />
+		<security:form-login login-processing-url="/j_spring_security_check"
+			username-parameter="username" password-parameter="password"
+			login-page="/login" default-target-url="/home"
+			always-use-default-target="true" authentication-failure-url="/loginfailed" />
+		<security:logout logout-url="/logout"
+			logout-success-url="/" />
+		<security:session-management
+			invalid-session-url="/">
+		</security:session-management>
+	</security:http>
 
-
-		<form-login login-page="/login/" username-parameter="username"
-			password-parameter="password" authentication-failure-url="/loginfailed"
-			default-target-url="/home" />
-
-		<logout logout-success-url="/logout" logout-url="/j_spring_security_logout" />
-	</http>
-
-	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
-		name="user1" password="123456" authorities="ROLE_USER" /> <user name="user2" 
-		password="123456" authorities="ROLE_USER" /> <user name="admin" password="123456" 
-		authorities="ROLE_ADMIN" /> </user-service> </authentication-provider> </authentication-manager> -->
-
-	<authentication-manager>
-		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select username,password,enabled from user where username=?"
-				authorities-by-username-query="select u.username,r.role from user u, user_role ur, role r where u.username=? and u.id = ur.user_id and r.id = ur.role_id" />
-		</authentication-provider>
-	</authentication-manager>
-
-</beans:beans>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:password-encoder hash="bcrypt" />
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query="select username,password, enabled from users where username=?"
+				authorities-by-username-query="select username, role from users where username =?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

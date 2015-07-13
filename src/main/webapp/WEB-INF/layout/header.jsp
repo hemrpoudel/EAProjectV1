@@ -31,6 +31,9 @@
 							<li><a href=""><i class="fa fa-linkedin"></i></a></li>
 							<li><a href=""><i class="fa fa-dribbble"></i></a></li>
 							<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+							<c:if test="${pageContext.request.userPrincipal.name != null}">
+								<b>Welcome ${pageContext.request.userPrincipal.name}</b>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -81,9 +84,26 @@
 									Checkout</a></li>
 							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
 									Cart</a></li>
-							<li><a href="/OnlineStore/login" class="active"><i
-									class="fa fa-lock"></i> Login</a></li>
+
+							<c:choose>
+								<c:when test="${pageContext.request.userPrincipal.name != null}">
+									<!-- <li><a href="/OnlineStore/logout" class="inactive"><i
+											class="fa fa-unlock"></i> Logout</a></li> -->
+
+									<c:url var="logoutUrl" value="/logout" />
+									<form action="${logoutUrl}" method="post">
+										<input type="submit" value="Log out" /> <input type="hidden"
+											name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</form>
+								</c:when>
+								<c:otherwise>
+									<li><a href="/OnlineStore/login" class="active"><i
+											class="fa fa-lock"></i> Login</a></li>
+								</c:otherwise>
+							</c:choose>
+
 						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -114,14 +134,20 @@
 									<li><a href="product-details.html">Product Details</a></li> -->
 									<li><a href="checkout.html">Checkout</a></li>
 									<li><a href="cart.html">Cart</a></li>
-									<li><a href="/OnlineStore/login" class="active">Login</a></li>
+									<c:choose>
+										<c:when
+											test="${pageContext.request.userPrincipal.name != null}">
+											<li><a href="/OnlineStore/logout" class="inactive">Logout</a></li>
+
+
+										</c:when>
+										<c:otherwise>
+											<li><a href="/OnlineStore/login" class="active">Login</a></li>
+										</c:otherwise>
+									</c:choose>
+
 								</ul></li>
-							<li class="dropdown"><a href="#">Blog<i
-									class="fa fa-angle-down"></i></a>
-								<!-- <ul role="menu" class="sub-menu">
-									<li><a href="blog.html">Blog List</a></li>
-									<li><a href="blog-single.html">Blog Single</a></li>
-								</ul></li> -->
+
 							<li><a href="/OnlineStore/404">404</a></li>
 							<li><a href="/OnlineStore/contact">Contact</a></li>
 						</ul>
@@ -135,8 +161,9 @@
 			</div>
 		</div>
 	</div>
-	<!--/header-bottom--> </header>
-	<!--/header-->
+	</header>
+
+	
 
 </body>
 </html>

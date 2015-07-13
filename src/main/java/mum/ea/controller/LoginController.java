@@ -9,12 +9,11 @@ public class LoginController {
 
 	
 	@RequestMapping("/login")
-	public String redirectRoot() {
-
+	public String login( ) {
+		
+		
 		return "/login/login";
 	}
-	
-	
 	
 	
 	
@@ -27,14 +26,14 @@ public class LoginController {
 	    @RequestMapping("/403")
 	    public String accessDenied(){
 	     	
-	     	return "login/login";
+	     	return "login/accessdenied";
 	     }
 	    
 	    
 	    @RequestMapping("/logout")
 	    public String logout(){
 	    	
-	    	System.out.println("Loading login page");
+	    	
 	     	
 	     	return "login/logout";
 	     }
