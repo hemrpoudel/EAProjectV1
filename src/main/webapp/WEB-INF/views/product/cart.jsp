@@ -9,6 +9,9 @@
 <head>
 <meta charset="utf-8">
   <jsp:include page="/WEB-INF/layout/header.jsp"/>  
+    <script type="text/javascript" src= '<c:url value="../../resources/js/cart.js" />'></script>
+    
+   
 <body>
 
 
@@ -30,7 +33,7 @@
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
-							<td class="description"></td>
+							<td class="description">Description</td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
@@ -38,32 +41,50 @@
 						</tr>
 					</thead>
 					<tbody>
-					
+				
 					
 					<c:forEach items="${cart.cartItems}" var="cart">
 			  				<tr>
 							<td class="cart_product">
 								<a href=""><img src="images/cart/one.png" alt=""></a>
+								${cart.value.product.name}
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href="">${cart.value.product.description}</a></h4>
+<!-- 								<p>Web ID: 1089772</p> -->
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								${cart.value.product.price}
 							</td>
+							
 							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
+<!-- 									<div class="cart_quantity_button"> -->
+<%-- 										<input id="quantity${cart.value.product.id}" --%>
+<!-- 											class="cart_quantity_input" type="text" name="quantity" -->
+<%-- 											value="<c:out value="${cart.value.quantity}"/>" --%>
+<!-- 											onkeypress="validate(event);" -->
+<%-- 											onchange="updateCart(this.id,${cart.value.product.id},'update');" --%>
+<!-- 											autocomplete="off" size="2"> -->
+<!-- 									</div> -->
+
+									${cart.value.quantity}
+								</td>
+					
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
+									<p class="cart_total_price">
+										$ <c:out value="${cart.value.totalPrice}" />
+									</p>
+								</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="/remove/ "><i class="fa fa-times"></i></a>
+							<button type="button" class="btn-primary"
+										onclick="removeFromCart('product_'+${cart.value.product.id},${cart.value.product.id});">
+										<i class="fa fa-times">
+<%-- 										<spring:message code="cart.table.label.remove" /> --%>
+											
+											</i>
+									</button>
+
+
 							</td>
 						</tr>
 
@@ -127,13 +148,6 @@
 		
 		</div>
 	</section> <!--/#cart_items-->
-
-
-
-
-
-
-
 
 
 
