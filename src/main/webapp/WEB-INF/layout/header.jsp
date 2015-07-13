@@ -45,7 +45,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="index.html"><img
+						<a href="/OnlineStore/"><img
 							src='<c:url value="/resources/images/home/logo.png" />'></a>
 					</div>
 					<div class="btn-group pull-right">
@@ -81,7 +81,7 @@
 									Checkout</a></li>
 							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
 									Cart</a></li>
-							<li><a href="login.html" class="active"><i
+							<li><a href="/OnlineStore/login" class="active"><i
 									class="fa fa-lock"></i> Login</a></li>
 						</ul>
 					</div>
@@ -106,24 +106,24 @@
 					</div>
 					<div class="mainmenu pull-left">
 						<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="/OnlineStore/">Home</a></li>
 							<li class="dropdown"><a href="#">Shop<i
 									class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
-									<li><a href="shop.html">Products</a></li>
-									<li><a href="product-details.html">Product Details</a></li>
+									<!-- <li><a href="shop.html">Products</a></li>
+									<li><a href="product-details.html">Product Details</a></li> -->
 									<li><a href="checkout.html">Checkout</a></li>
 									<li><a href="cart.html">Cart</a></li>
-									<li><a href="login.html" class="active">Login</a></li>
+									<li><a href="/OnlineStore/login" class="active">Login</a></li>
 								</ul></li>
 							<li class="dropdown"><a href="#">Blog<i
 									class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
+								<!-- <ul role="menu" class="sub-menu">
 									<li><a href="blog.html">Blog List</a></li>
 									<li><a href="blog-single.html">Blog Single</a></li>
-								</ul></li>
-							<li><a href="404.html">404</a></li>
-							<li><a href="contact-us.html">Contact</a></li>
+								</ul></li> -->
+							<li><a href="/OnlineStore/404">404</a></li>
+							<li><a href="/OnlineStore/contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>

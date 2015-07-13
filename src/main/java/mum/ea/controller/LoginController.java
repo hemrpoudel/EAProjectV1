@@ -44,5 +44,16 @@ public class LoginController {
 	     	return "login/logout";
 	     }
 	
+	    @RequestMapping("/contact")
+		public String contact() {
+			
+			return "/contact";
+		}
+	    
+	    @RequestMapping("/404")
+		public String error404() {
+			
+			return "/404";
+		}
 
 }
