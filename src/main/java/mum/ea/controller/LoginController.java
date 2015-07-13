@@ -17,11 +17,6 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping(value={"/","/home"})
-	public String home() {
-		
-		return "index";
-	}
 	
 	 @RequestMapping("/loginfailed")
 	   public String loginFailed(){
