@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -14,7 +18,11 @@ public class Category {
 	
 	@Id @GeneratedValue
 	private int id;
+	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty(message = "Description Required")
 	private String description;
 	
 	@OneToMany(mappedBy="category")
@@ -36,7 +44,7 @@ public class Category {
 	public String getDescription() {
 		return description;
 	}
-	public void setDesc(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 	
