@@ -22,9 +22,9 @@ public class UserController {
 	@RequestMapping(value="/saveUser", method=RequestMethod.POST)
 	public String saveUser(@Valid  User user , BindingResult bindingResult,RedirectAttributes redir) {
 		if(bindingResult.hasErrors() )
-			return "/login";
+			return "/login/register";
 		else{
-			System.out.println("test");
+			
 		userService.save(user);
 		redir.addFlashAttribute("message", "User Saved!");
 		return "redirect:/login";

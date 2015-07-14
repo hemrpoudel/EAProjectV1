@@ -14,14 +14,14 @@
 
 	<security:global-method-security
 		pre-post-annotations="enabled" />
-	<security:http pattern="/" security="none"/>
+	<!-- <security:http pattern="/" security="none"/> -->
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
 		<security:intercept-url pattern="/logout"
 			access="permitAll" />
-		<security:intercept-url pattern="/OnlineStore/.*$"
-			access="isAuthenticated()" />
+		<!-- <security:intercept-url pattern="/OnlineStore/.*$"
+			access="isAuthenticated()" /> -->
 		<security:intercept-url pattern="/OnlineStore/product/**"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:form-login login-processing-url="/j_spring_security_check"

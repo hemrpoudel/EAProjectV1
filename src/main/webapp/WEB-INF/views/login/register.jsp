@@ -23,7 +23,9 @@
 						<form:form modelAttribute="user" action="saveUser">
 						    <form:errors path="username" cssStyle="color:red"/>
 							<form:input path="username" placeholder="Name"/>
+							<form:errors path="emailAddress"  cssStyle="color:red" />
 							<form:input path="emailAddress" placeholder="Email Address"/>
+							<form:errors path="password"  cssStyle="color:red" />
 							<form:input path="password" placeholder="Password"/>
 							<button type="submit" class="btn btn-default">Signup</button>
 						</form:form>
