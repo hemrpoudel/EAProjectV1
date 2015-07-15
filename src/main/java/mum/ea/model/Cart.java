@@ -47,12 +47,12 @@ public class Cart implements Serializable{
 
 		if (cartItems.containsKey(productId)) {
 			CartItem existingCartItem = cartItems.get(productId);
-			if(mode.equalsIgnoreCase("update")){
-				existingCartItem.setQuantity(item.getQuantity());
-			}else{
+//			if(mode.equalsIgnoreCase("update")){
+//				existingCartItem.setQuantity(item.getQuantity());
+//			}else{
 				existingCartItem.setQuantity(existingCartItem.getQuantity()
 					+ item.getQuantity());
-			}
+//			}
 			cartItems.put(productId, existingCartItem);
 		} else {
 			cartItems.put(productId, item);
@@ -71,8 +71,9 @@ public class Cart implements Serializable{
 		for (CartItem item : cartItems.values()) {
 			total = total + item.getTotalPrice();
 		}
-		
+	
 		total = (double) Math.round(total * 100) / 100;
+		System.out.println( "Grand Total Price altogether: "+total);
 	}
 
 	@Override

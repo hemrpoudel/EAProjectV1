@@ -42,8 +42,17 @@ public class CartItem implements Serializable{
 	}
 
 	public void updateTotalPrice() {
-		totalPrice = totalPrice + this.product.getPrice() * this.quantity;
+		System.out.println(totalPrice);
+		if( this.quantity == 1){
+			totalPrice= this.product.getPrice();	
+			System.out.println(totalPrice);
+		}
+		else{
+		totalPrice = this.product.getPrice() * this.quantity;
+		}
+		System.out.println(totalPrice);
 		totalPrice = (double) Math.round(totalPrice * 100) / 100;
+
 	}
 
 	@Override

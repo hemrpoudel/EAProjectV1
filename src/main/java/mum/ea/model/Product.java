@@ -3,6 +3,7 @@ package mum.ea.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,11 +13,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name ="product")
@@ -29,13 +34,18 @@ public class Product {
 	@NotNull(message="Price required")
 	private int price;
 	private String description;
+	@Column(name = "image")
 	private String image;
 	@Temporal(value=TemporalType.TIMESTAMP )
 	private Date date;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	private Category category;
+	
+	@Transient
+	@JsonIgnore
+	private MultipartFile imageFile;
 	
 	public int getId() {
 		return id;
@@ -88,6 +98,14 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+	
+	
+	
 	
 }

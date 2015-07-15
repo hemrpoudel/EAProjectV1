@@ -38,8 +38,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	public  List<Product> getProductByCategory(Category category) {
-		return null;
-//		return productDao.getProductByCategory(category);
+		
+		return productDao.getProductByCategory(category);
 	}
 		
 	public void delete(Product product) {
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 //				productDao.findAllByOrderByCreatedDateDesc(new PageRequest(0, 6));
 	}
-
+	
 	
 
 }

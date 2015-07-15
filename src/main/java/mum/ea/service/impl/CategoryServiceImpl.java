@@ -21,6 +21,14 @@ public class CategoryServiceImpl implements CategoryService{
 	private CategoryDao categoryDao;
 	
 	public void save(Category category) {
+		if(category.getParent().getId() != 0){
+			category.setLeaf(true);
+		}
+		else
+		{
+			category.setLeaf(false);
+			category.setParent(null);
+		}
 		
 		categoryDao.save(category);
 	}
@@ -34,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService{
 		categoryDao.delete(category);
 	}
 
-	public List<Category> getCategory() {
+	public List<Category> findAll() {
 		
 		return (List<Category>) categoryDao.findAll();
 	}
@@ -42,6 +50,14 @@ public class CategoryServiceImpl implements CategoryService{
 	public void delete(int id) {
 		categoryDao.delete(id);
 		
+	}
+
+	public List<Category> getRootCategories() {
+		return categoryDao.getRootCategories();
+	}
+
+	public List<Category> getChildCategories() {
+		return categoryDao.getChildCategories();
 	}
 	
 	

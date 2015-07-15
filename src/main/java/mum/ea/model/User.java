@@ -23,10 +23,10 @@ public class User {
 	private String username;
 	@Email
 	private String emailAddress;
-	@Size(min=4,max=8)
+//	@Size(min=4,max=8)
 	private String password;
 	@Enumerated(EnumType.STRING)
-	private Role role;
+	private Role role = Role.ROLE_USER;
 	
 	private boolean enabled=true;
 	

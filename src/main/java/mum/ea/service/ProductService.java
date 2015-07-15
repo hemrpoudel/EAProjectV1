@@ -14,6 +14,7 @@ public interface ProductService {
 	List<Product> getFeatureProduct();
 	List<Product> findAllByOrderByCreatedDateDesc();
 	List<Product> getProductByCategory(Category category);
+	public void delete(Product product);
 
 
 }

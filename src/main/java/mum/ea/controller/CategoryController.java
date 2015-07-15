@@ -25,26 +25,28 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@RequestMapping(value = { "/{id}" })
+/*	@RequestMapping(value = { "/{id}" })
 	public String getCategorytById(@PathVariable int id, Model model) {
 		model.addAttribute("category", categoryService.findOne(id));
 		return "/category/categoryList";
 	}
-
+*/
 	@RequestMapping("/add")
 	public String addCategory(Model model) {
 		System.out.println("Category add");
 		model.addAttribute("category", new Category());
+		model.addAttribute("rootCategoryList",categoryService.getRootCategories());
 		return "/category/addCategory";
 	}
 
 	@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
-	public String saveCategory(@Valid Category category, BindingResult bindingResult) {
+	public String saveCategory(@Valid Category category, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()){
 			return "/category/addCategory";
 			}
 		else {
 			categoryService.save(category);
+			model.addAttribute("rootCategoryList",categoryService.getRootCategories());
 			return "redirect:/category/";
 
 		}
@@ -60,16 +62,16 @@ public class CategoryController {
 
 	@RequestMapping(value = "/get/{id}")
 	public String getCategory(@PathVariable int id, Model model) {
-		
+		model.addAttribute("rootCategoryList",categoryService.getRootCategories());
 		model.addAttribute("category", categoryService.findOne(id));
 		
-		return "/category/updateCategory";
+		return "/category/addCategory";
 	}
 
 	@RequestMapping(value = { "/", "/index" })
 	public String listCategoryList(Map<String, Object> map) {
 		map.put("category", new Category());
-		map.put("CategoryList", categoryService.getCategory());
+		map.put("CategoryList", categoryService.findAll());
 
 		return "/category/categoryList";
 	}

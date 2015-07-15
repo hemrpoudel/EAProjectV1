@@ -83,7 +83,7 @@ public class CartController {
 		if (cart == null) {
 			cart = cartService.create(new Cart(cartId));
 		}
-
+		 
 		// get product infomation
 		Product product = productService.findOne(productId);
 		if (product == null) {
@@ -92,6 +92,7 @@ public class CartController {
 
 		CartItem item = new CartItem(product);
 		item.setQuantity(quantity);
+		System.out.println("Quantity No "+quantity);
 		cart.addCartItem(item, mode);
 		cartService.update(cartId, cart);
 		System.out.println("Product "+ product.getId()+ " added to cart "+ cart.getCartId());

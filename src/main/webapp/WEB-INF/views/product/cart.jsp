@@ -46,11 +46,11 @@
 					<c:forEach items="${cart.cartItems}" var="cart">
 			  				<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-								${cart.value.product.name}
+								<a href=""><img src="<spring:url value="/resources/images/product/${cart.value.product.image}"  />" alt="${cart.value.product.name}" width="80px" height="100px "   />  </a>
+								<h4>${cart.value.product.name} </h4>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">${cart.value.product.description}</a></h4>
+								${cart.value.product.description}
 <!-- 								<p>Web ID: 1089772</p> -->
 							</td>
 							<td class="cart_price">
@@ -97,11 +97,11 @@
 								<table class="table table-condensed total-result">
 									<tr>
 										<td>Cart Sub Total</td>
-										<td>$59</td>
+										<td><c:out value="${cart.total}" />  </td>
 									</tr>
 									<tr>
 										<td>Exo Tax</td>
-										<td>$2</td>
+										<td>$0</td>
 									</tr>
 									<tr class="shipping-cost">
 										<td>Shipping Cost</td>
@@ -109,22 +109,21 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>$61</span></td>
+										<td><span><c:out value="${cart.total}" /></span></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+					
 			</div>
 		
 		
-			<div class="review-payment">
-				<h2>View Cart</h2>
-			</div>
-
-			
-			<div class="payment-options">
+	
+<a style="margin-left: 1050px; margin-top: 0px;" class="btn btn-default get"  onclick="return clearCart()">CheckOut</a>
+			<br><br>
+		<!-- 	<div class="payment-options">
 					<span>
 						<label><input type="checkbox"> Direct Bank Transfer</label>
 					</span>
@@ -134,7 +133,7 @@
 					<span>
 						<label><input type="checkbox"> Paypal</label>
 					</span>
-				</div>
+				</div> -->
 		
 		
 		</c:otherwise>

@@ -26,3 +26,23 @@ var removeFromCart = function(rowid, productId){
 		}
 	});
 }
+
+//var clearCart = function(){
+//	
+//	alert("You");
+//	
+////	$.ajax({
+////		url:"/OnlineStore/cart/remove/"+productId,
+////		type: "DELETE",
+////		dataType: "json",
+////		contentType: "application/json",
+////		success:function(success){
+////			//$("#"+rowid).remove();
+////			location.reload();
+////		},
+////		error:function(error){
+////		}
+////	});
+//	
+//	
+//}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,7 @@
 							<li><a href=""><i class="fa fa-phone"></i> +1 795 01 88
 									821</a></li>
 							<li><a href=""><i class="fa fa-envelope"></i>
-									info@mumshopprt.com</a></li>
+									info@mumsuppprt.com</a></li>
 						</ul>
 					</div>
 				</div>
@@ -82,9 +83,11 @@
 							<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>
 									Checkout</a></li>
-							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
-									Cart</a></li>
-
+						<!--  <li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
+									Cart</a></li>  -->
+								<li><a href="cart/view/<%= session.getId() %>"><i class="fa fa-shopping-cart"></i> 
+															Cart</a></li> 
+								
 							<c:choose>
 								<c:when test="${pageContext.request.userPrincipal.name != null}">
 									<!-- <li><a href="/OnlineStore/logout" class="inactive"><i
@@ -148,7 +151,12 @@
 
 								</ul></li>
 
-							<li><a href="/OnlineStore/404">404</a></li>
+<!-- 							<li><a href="/OnlineStore/404">404</a></li> -->
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="/OnlineStore/category/">Manage Categories</a></li>
+							<li><a href="/OnlineStore/product/add/">Manage Product</a></li>
+							<li><a href="/OnlineStore/register">Manage User </a></li>
+							</sec:authorize>
 							<li><a href="/OnlineStore/contact">Contact</a></li>
 						</ul>
 					</div>

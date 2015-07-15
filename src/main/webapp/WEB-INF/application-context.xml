@@ -22,7 +22,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/store" />
 		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="password" value="" />
 	</bean>
 
 
@@ -66,7 +66,7 @@
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="storenepal2015@gmail.com" />
-		<property name="password" value="enepal2015" />
+		<property name="password" value="nepal2015" />
 
 		<property name="javaMailProperties">
 			<props>
@@ -84,5 +84,10 @@
          </value>
       </property>
    </bean>
+   
+   <mvc:resources location="/resources/images/" mapping="/images/**"></mvc:resources>
+		<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  <property name="maxUploadSize" value="10240000"/>
+	</bean>
 
 </beans>

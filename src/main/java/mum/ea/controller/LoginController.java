@@ -74,8 +74,8 @@ public class LoginController {
 
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 
-				message.setTo("ajesh.mahto@gmail.com");
-				message.setFrom("ajesh.mahto@gmail.com"); // could be
+				message.setTo("madeye.lupeen@gmail.com");
+//				message.setFrom("ajesh.mahto@gmail.com"); // could be
 															// parameterized...
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("user", user);
@@ -88,7 +88,7 @@ public class LoginController {
 		};
 		this.mailSender.send(preparator);
 
-		return "redirect:/index";
+		return "redirect:/";
 	}
 
 }
