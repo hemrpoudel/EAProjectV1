@@ -90,13 +90,7 @@
 								
 							<c:choose>
 								<c:when test="${pageContext.request.userPrincipal.name != null}">
-								<%-- <c:url var="logoutUrl" value="/logout" />
-								<form action="${logoutUrl}" method="post">
-									<li><a href="/OnlineStore/logout" class="active"><i
-											class="fa fa-unlock"></i> Logout</a></li>
-											 <input type="hidden"
-											name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                 </form> --%>
+								
                                  <li><a href="javascript:formSubmit()" class="active"><i
 											class="fa fa-unlock"></i> Logout</a></li>
 								</c:when>
@@ -173,7 +167,7 @@
 	</header>
 
 
-<%-- <c:url value="/j_spring_security_logout" var="logoutUrl" /> --%>
+
 <c:url var="logoutUrl" value="/logout" />
 	<form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
