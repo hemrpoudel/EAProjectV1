@@ -107,6 +107,14 @@ public class User {
 		ROLE_USER, ROLE_ADMIN 
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	
 	
 

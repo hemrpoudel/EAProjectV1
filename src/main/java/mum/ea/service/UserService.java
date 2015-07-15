@@ -7,9 +7,15 @@ import mum.ea.model.User;
 public interface UserService {
 	
 	public void save(User user);
-	public void findOne(int userID);
+
 	
 	public List<User> findAll();
+
+
+	public User findOne( Long id);
+
+
+	public void delete(Long id);
 	
 	
 

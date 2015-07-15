@@ -2,14 +2,14 @@ package mum.ea.service.impl;
 
 import java.util.List;
 
-import mum.ea.dao.UserDao;
-import mum.ea.model.User;
-import mum.ea.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import mum.ea.dao.UserDao;
+import mum.ea.model.User;
+import mum.ea.service.UserService;
 
 @Service
 @Transactional
@@ -23,9 +23,6 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	public void findOne(int userID) {
-		userdao.findOne(userID);
-	}
 
 	public List<User> findAll() {
 		return (List<User>)userdao.findAll();
@@ -34,6 +31,15 @@ public class UserServiceImpl implements UserService {
 	private String encryptPassword(String password) {
 		BCryptPasswordEncoder pass = new BCryptPasswordEncoder();
 		return pass.encode(password);
+	}
+
+
+	public User findOne(Long id) {
+		return userdao.findOne(id);
+	}
+	
+	public void delete(Long id){
+		userdao.delete(id);
 	}
 
 
