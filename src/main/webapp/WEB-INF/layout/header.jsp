@@ -90,14 +90,15 @@
 								
 							<c:choose>
 								<c:when test="${pageContext.request.userPrincipal.name != null}">
-									<!-- <li><a href="/OnlineStore/logout" class="inactive"><i
-											class="fa fa-unlock"></i> Logout</a></li> -->
-
-									<c:url var="logoutUrl" value="/logout" />
-									<form action="${logoutUrl}" method="post">
-										<input type="submit" value="Log out" /> <input type="hidden"
+								<%-- <c:url var="logoutUrl" value="/logout" />
+								<form action="${logoutUrl}" method="post">
+									<li><a href="/OnlineStore/logout" class="active"><i
+											class="fa fa-unlock"></i> Logout</a></li>
+											 <input type="hidden"
 											name="${_csrf.parameterName}" value="${_csrf.token}" />
-									</form>
+                                 </form> --%>
+                                 <li><a href="javascript:formSubmit()" class="active"><i
+											class="fa fa-unlock"></i> Logout</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="/OnlineStore/login" class="active"><i
@@ -171,6 +172,18 @@
 	</div>
 	</header>
 
+
+<%-- <c:url value="/j_spring_security_logout" var="logoutUrl" /> --%>
+<c:url var="logoutUrl" value="/logout" />
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
 	
 
 </body>

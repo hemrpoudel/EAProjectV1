@@ -1,15 +1,19 @@
 package mum.ea.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -25,6 +29,9 @@ public class User {
 	private String emailAddress;
 //	@Size(min=4,max=8)
 	private String password;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	private Date dob;
 	@Enumerated(EnumType.STRING)
 	private Role role = Role.ROLE_USER;
 	
@@ -34,10 +41,11 @@ public class User {
 
 	}
 	
-	public User(String username, String emailAddress, String password) {
+	public User(String username, String emailAddress, String password ,Date dob) {
 		this.username = username;
 		this.emailAddress = emailAddress;
 		this.password = password;
+		this.dob=dob;
 	}
 
 
@@ -60,6 +68,14 @@ public class User {
 		this.emailAddress = emailAddress;
 	}
 
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 
 	public String getPassword() {
 		return password;

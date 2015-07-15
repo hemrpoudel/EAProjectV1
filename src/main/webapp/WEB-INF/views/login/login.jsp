@@ -42,6 +42,7 @@
 						</span>
 						<button type="submit" class="btn btn-default">Login</button>
 					</form>
+					<span >Not yet Registered? <a href="/OnlineStore/register">Sign Up Now</a></span>
 				</div>
 				<!--/login form-->
 			</div>
@@ -49,11 +50,7 @@
 		</div>
 	</div>
 
-	<div >
-		<div >
-			<span ><a href="/OnlineStore/register">Register Now</a></span>
-		</div>
-	</div>
+	
 	</section>
 	<!--/form-->
 

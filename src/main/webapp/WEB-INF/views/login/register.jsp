@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,22 +29,28 @@
 						<form:input path="username" placeholder="Name" />
 						<form:errors path="emailAddress" cssStyle="color:red" />
 						<form:input path="emailAddress" placeholder="Email Address" />
+						<%-- <form:input path="dob" placeholder="Date" /> --%>
+						<form:errors path="dob" cssStyle="color:red" />
+						<form:input id="dob" placeholder="Date of Birth" path="dob"
+							type="text" />
+
+
 						<form:errors path="password" cssStyle="color:red" />
-						<form:input path="password" placeholder="Password" />
-						
-<!-- 						<h4>YOUR ROLE</h4> -->
+						<form:input path="password" type="password" placeholder="Password" />
+
+						<!-- 						<h4>YOUR ROLE</h4> -->
 						<form:select path="role" class="forminput">
-						
+
 							<form:option value="ROLE_USER" label="ROLE_USER" />\
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<form:option value="ROLE_ADMIN" label="ROLE_ADMIN" />
+								<form:option value="ROLE_ADMIN" label="ROLE_ADMIN" />
 							</sec:authorize>
 						</form:select>
 						<br>
 						<br>
 
 						<button type="submit" class="btn btn-default">Signup</button>
-					
+
 					</form:form>
 				</div>
 				<!--/sign up form-->
