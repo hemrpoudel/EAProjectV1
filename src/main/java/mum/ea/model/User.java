@@ -25,11 +25,11 @@ public class User {
 	private Long id;
 	@NotEmpty(message="can't be empty")
 	private String username;
-	@Email
+	@Email @NotEmpty(message="can't be empty")
 	private String emailAddress;
-//	@Size(min=4,max=8)
+	@NotEmpty(message="can't be empty")
 	private String password;
-	@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE) 
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	private Date dob;
 	@Enumerated(EnumType.STRING)
