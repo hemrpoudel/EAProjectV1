@@ -81,14 +81,14 @@
 						<ul class="nav navbar-nav">
 							<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 							<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>
-									Checkout</a></li>
+							<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i>
+									Checkout</a></li> -->
 						<!--  <li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
 									Cart</a></li>  -->
-								<li><a href="cart/view/<%= session.getId() %>"><i class="fa fa-shopping-cart"></i> 
+								<li><a href="/OnlineStore/cart/view/<%= session.getId() %>"><i class="fa fa-shopping-cart"></i> 
 															Cart</a></li> 
 								
-							<c:choose>
+							 <%-- <c:choose>
 								<c:when test="${pageContext.request.userPrincipal.name != null}">
 								
                                  <li><a href="javascript:formSubmit()" class="active"><i
@@ -98,8 +98,18 @@
 									<li><a href="/OnlineStore/login" class="active"><i
 											class="fa fa-lock"></i> Login</a></li>
 								</c:otherwise>
-							</c:choose>
-
+							</c:choose>  --%>
+							
+							<sec:authorize access="isAnonymous()">
+							<li><a href="/OnlineStore/login" class="active"><i
+											class="fa fa-lock"></i> Login</a></li>
+							</sec:authorize>
+							
+							<sec:authorize access="isAuthenticated()">
+							
+							<li><a href="javascript:formSubmit()" class="active"><i
+											class="fa fa-unlock"></i> Logout</a></li>
+							</sec:authorize> 
 						</ul>
 
 					</div>
