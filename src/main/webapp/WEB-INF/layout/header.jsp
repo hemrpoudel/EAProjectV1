@@ -150,7 +150,7 @@
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 							<li><a href="/OnlineStore/category/">Manage Categories</a></li>
 							<li><a href="/OnlineStore/product/add/">Manage Product</a></li>
-							<li><a href="/OnlineStore/register">Manage User </a></li>
+							<li><a href="/OnlineStore/userlist">Manage User </a></li>
 							</sec:authorize>
 							<li><a href="/OnlineStore/contact">Contact</a></li>
 						</ul>

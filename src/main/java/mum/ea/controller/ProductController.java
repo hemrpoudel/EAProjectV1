@@ -140,4 +140,12 @@ public class ProductController {
 		model.addAttribute("categoryList",categoryService.getChildCategories());
 		return "/product/addproduct";
 	}
+	@RequestMapping(value = "/checkout")
+	public String checkout(Model model,HttpServletRequest request)
+	{
+		return "redirect:/cart/payment/" + request.getSession(true).getId();
+//		return "/product/payment";
+		
+	}
+	
 }

@@ -59,6 +59,19 @@ public class CartController {
 		return "/product/cart";
 	}
 	
+	
+	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
+	public String payment(@PathVariable("id") String cartId, Model model) {
+		model.addAttribute("cartId", cartId);
+//		Cart cart = cartService.read(cartId);
+
+//		if (cart == null) {
+//			cart = new Cart(cartId);
+//			cartService.create(cart);
+//		}
+//		model.addAttribute("cart", cart);
+		return "/product/payment";
+	}
 	/**
 	 * Adds item to the cart
 	 * @param productId

@@ -31,7 +31,7 @@
 						<form:input path="emailAddress" placeholder="Email Address" />
 						<%-- <form:input path="dob" placeholder="Date" /> --%>
 						<form:errors path="dob" cssStyle="color:red" />
-						<form:input id="dob" placeholder="Date of Birth" path="dob"
+						<form:input id="dob" placeholder="Date of Birth(MM/DD/YYYY)" path="dob"
 							type="text" />
 
 

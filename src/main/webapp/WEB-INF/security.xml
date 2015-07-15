@@ -14,22 +14,26 @@
 
 	<security:global-method-security
 		pre-post-annotations="enabled" />
-	<!-- <security:http pattern="/" security="none"/> -->
-	<security:http security="none" pattern="/product/**"></security:http>
+
+<!-- 	<security:http security="none" pattern="/product/**"></security:http> -->
 	<security:http security="none" pattern="/cart/**"></security:http>
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
 		<security:intercept-url pattern="/logout"
 			access="permitAll" />
-		<!-- <security:intercept-url pattern="/OnlineStore/.*$"
-			access="isAuthenticated()" /> -->
-		<security:intercept-url pattern="/OnlineStore/product/**"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:form-login login-processing-url="/j_spring_security_check"
+		<security:intercept-url pattern="/product/checkout*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"  />
+		<security:intercept-url pattern="/userlist" access="hasRole('ROLE_ADMIN')"  />
+		<security:intercept-url pattern="/cart/payment/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"  />
+		<security:intercept-url pattern="/product/**"  access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/category/**" access="hasRole('ROLE_ADMIN')"/>
+		
+		<security:form-login login-processing-url="/j_spring_security_check" 
 			username-parameter="username" password-parameter="password"
-			login-page="/login" default-target-url="/home"
-			always-use-default-target="true" authentication-failure-url="/loginfailed" />
+			login-page="/login" 
+			 authentication-failure-url="/loginfailed" />
+		<security:access-denied-handler error-page="/403"  />
+		
 		<security:logout logout-url="/logout"
 			logout-success-url="/" />
 		<security:session-management

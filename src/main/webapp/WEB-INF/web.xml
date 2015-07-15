@@ -25,9 +25,9 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<listener>
+	<!-- <listener>
 		<listener-class>mum.ea.listener.CategoryListener</listener-class>
-	</listener>
+	</listener> -->
 	
 	
 	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/security.xml</param-value> 

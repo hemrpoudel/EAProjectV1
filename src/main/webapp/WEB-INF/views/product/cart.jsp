@@ -121,7 +121,7 @@
 		
 		
 	
-<a style="margin-left: 1050px; margin-top: 0px;" class="btn btn-default get"  onclick="return clearCart()">CheckOut</a>
+<a style="margin-left: 1050px; margin-top: 0px;" class="btn btn-default get" href="/OnlineStore/product/checkout"  >CheckOut</a>
 			<br><br>
 		<!-- 	<div class="payment-options">
 					<span>

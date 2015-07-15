@@ -9,7 +9,6 @@ import javax.mail.internet.MimeMessage;
 
 import mum.ea.model.User;
 
-import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -25,8 +24,8 @@ public class LoginController {
 
 	@Autowired
 	private JavaMailSender mailSender;
-	@Autowired
-	private VelocityEngine velocityEngine;
+//	@Autowired
+//	private VelocityEngine velocityEngine;
 
 	@RequestMapping("/login")
 	public String login() {
@@ -64,7 +63,7 @@ public class LoginController {
 		return "/404";
 	}
 
-	@RequestMapping("/mail")
+	/*@RequestMapping("/mail")
 	public String sendMail() throws MessagingException {
 
 		final User user = new User();
@@ -89,6 +88,6 @@ public class LoginController {
 		this.mailSender.send(preparator);
 
 		return "redirect:/";
-	}
+	}*/
 
 }
